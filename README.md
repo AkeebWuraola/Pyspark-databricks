@@ -52,9 +52,20 @@ The pipeline is designed for **real-world ETL scenarios** and can be scaled to l
 - PySpark 3.x installed  
 - Optional: Conda or virtualenv for environment management  
 
-### Installation
+### Project Structure
 
-```bash
-git clone https://github.com/your-username/nyc-taxi-etl.git
-cd nyc-taxi-etl
-pip install -r requirements.txt
+```
+nyc-taxi-etl-pyspark/
+│
+├── docs/                # exploratory analysis, etl workflow and project notes
+├── README.md            # project documentation
+
+```
+
+### Notes
+
+The taxi zone lookup table can be downloaded directly from NYC website or fetched programmatically.
+
+Spark cannot read https:// URLs directly for CSVs; use pandas to fetch and then convert to Spark dataframe.
+
+This pipeline is suitable for small to medium datasets; for very large datasets, consider storing reference data in S3/HDFS.
